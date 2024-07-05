@@ -1,6 +1,6 @@
 .panel {
-    width: 1200px;
-    height: 800px;
+    width: 1000px;
+    height: 700px;
     margin: 20px auto;
     border: 2px solid #ccc;
     border-radius: 20px;
@@ -17,12 +17,13 @@
     width: 100%;
     box-sizing: border-box;
     border-radius: 18px 18px 0 0;
+    
   }
   
   .header .icon-lock {
     height: 40px;
     width: 40px;
-    background-image: url('/cargar.jpg') !important;
+    background-image: url('/User.jpg') !important;
     background-size: cover;
     background-position: center;
     margin-right: 10px;
@@ -39,58 +40,55 @@
   }
 
 
-  .login-container {
-    width: 500px;
-    height: 500px;
+  /* login.css */
+.login-container {
+    width: 300px;
     margin: 0 auto;
     padding: 20px;
-    border: 2px solid #000000;
+    border: 1px solid #ccc;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     background-color: #fff;
-    
   }
   
   .login-container h2 {
-    text-align: left;
+    text-align: center;
     margin-bottom: 20px;
     color: #ff6600; /* Color del título */
   }
   
   .input-group {
     margin-bottom: 15px;
-    font-size: 1.2em;
-    
   }
   
   .input-group label {
     display: block;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
   }
   
   .input-group input {
     width: 100%;
-    padding: 15px;
+    padding: 8px;
     box-sizing: border-box;
     border: 1px solid #ccc;
     border-radius: 5px;
   }
   
+  /* Nuevo estilo para centrar el botón */
   .button-container {
     display: flex;
     justify-content: center;
   }
-
+  
   button {
     width: 50%;
     padding: 10px;
-    margin-top: 30px;
+    margin-top: 10px;
     background-color: #ff6600; /* Color del botón */
     color: #fff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    
   }
   
   button:hover {
