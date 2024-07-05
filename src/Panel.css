@@ -1,56 +1,61 @@
 .panel {
     width: 1200px;
-    height: 700px;
+    height: 760px;
     margin: 20px auto;
-    border: 1px solid #ccc;
-    border-radius: 8px;
+    border: 2px solid #ccc;
+    border-radius: 20px;
     background-color: #f9f9f9;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    /* border: 2px solid black; /* borde Header icono */
   }
   
   .header {
     background-color: #e65c00;
     color: white;
-    padding: 10px;
+    padding: 10px; /* Puedes ajustar o eliminar el padding según sea necesario */
     display: flex;
     align-items: center;
-    border: 2px solid black;/* borde Header */
-  }
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 18px 18px 0 0; /* Aplica bordes redondeados solo a las esquinas superiores */
+}
   
   .header .icon-lock {
+    height: 40px;
+    width: 40px;
+    background-image: url('/cargar.jpg') !important; /* Asegúrate de que la ruta sea correcta */
+    background-size: cover; /* Ajusta la imagen para cubrir el área del header */
+    background-position: center;
     margin-right: 10px;
-    border: 2px solid black;/* borde Header icono */
+   
     
   }
   
   .header span {
     font-size: 2.5em;
     font-weight: bolder;
-    border: 2px solid black;/* borde Header texto */
   }
   
   .content {
     padding: 20px;
-    height: 550px;
-    border: 2px solid rgb(255, 1, 1);/* borde Content */
+    height: 570px;
+    
   }
   
   .content h2 {
-    font-size: 1.2em;
+    font-size: 1.5em;
     margin-bottom: 20px;
-    border: 2px solid rgb(255, 0, 140);/* borde Content titulo */
   }
   
   .form-group {
-    margin-bottom: 20px;
-    border: 2px solid rgb(255, 196, 0);/* borde Content Area */
+    font-size: 1.2em;
+    margin-bottom: 25px;
   }
   
   .form-group label {
     display: block;
     margin-bottom: 5px;
     font-weight: bold;
-    border: 2px solid rgb(3, 255, 58);/* borde Content */
   }
   
   .select {
@@ -58,7 +63,6 @@
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    border: 2px solid rgb(0, 60, 255);/* borde Content Select Area*/
   }
   
   .file-upload {
@@ -86,6 +90,7 @@
     justify-content: space-between;
     align-items: center;
     width: 100%;
+    background-color: #c7c7c7;
     border: 2px solid rgb(120, 20, 126);/* borde Subir archivo Content */
   }
   
