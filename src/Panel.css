@@ -1,0 +1,134 @@
+.panel {
+    width: 1200px;
+    height: 700px;
+    margin: 20px auto;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .header {
+    background-color: #e65c00;
+    color: white;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    border: 2px solid black;/* borde Header */
+  }
+  
+  .header .icon-lock {
+    margin-right: 10px;
+    border: 2px solid black;/* borde Header icono */
+    
+  }
+  
+  .header span {
+    font-size: 2.5em;
+    font-weight: bolder;
+    border: 2px solid black;/* borde Header texto */
+  }
+  
+  .content {
+    padding: 20px;
+    height: 550px;
+    border: 2px solid rgb(255, 1, 1);/* borde Content */
+  }
+  
+  .content h2 {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+    border: 2px solid rgb(255, 0, 140);/* borde Content titulo */
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+    border: 2px solid rgb(255, 196, 0);/* borde Content Area */
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    border: 2px solid rgb(3, 255, 58);/* borde Content */
+  }
+  
+  .select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    border: 2px solid rgb(0, 60, 255);/* borde Content Select Area*/
+  }
+  
+  .file-upload {
+    background-color: #f1f1f1;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s ease;
+    border: 2px solid rgb(247, 0, 255);/* borde Content */
+  }
+  
+  .file-upload:hover {
+    background-color: #f0f0f0;
+    
+  }
+  
+  .file-upload-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    border: 2px solid rgb(120, 20, 126);/* borde Subir archivo Content */
+  }
+  
+  .file-button {
+    background-color: #e65c00;
+    color: white;
+    border: 2px solid rgb(255, 238, 0);/* borde boton subir archivo*/
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s ease;
+  }
+  
+  .file-button .icon-attach {
+    margin-right: 5px;
+  }
+  
+  .file-button:hover {
+    background-color: #cc4c00;
+  }
+  
+  .download-link {
+    color: #007bff;
+    text-decoration: none;
+    display: block;
+    margin-top: 10px;
+    border: 2px solid rgb(0, 0, 0);/* Link de descarga*/
+  }
+  
+  .submit-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 20px;
+    width: 100%;
+    transition: background-color 0.3s ease;
+  }
+  
+  .submit-button:hover {
+    background-color: #0056b3;
+  }
