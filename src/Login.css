@@ -44,16 +44,15 @@
     height: 500px;
     margin: 0 auto;
     padding: 20px;
-    border: 1px solid #ccc;
+    border: 2px solid #000000;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     background-color: #fff;
-    border: 2px solid #000000;
     
   }
   
   .login-container h2 {
-    text-align: center;
+    text-align: left;
     margin-bottom: 20px;
     color: #ff6600; /* Color del título */
   }
@@ -66,26 +65,32 @@
   
   .input-group label {
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
   }
   
   .input-group input {
     width: 100%;
-    padding: 8px;
+    padding: 15px;
     box-sizing: border-box;
     border: 1px solid #ccc;
     border-radius: 5px;
   }
   
+  .button-container {
+    display: flex;
+    justify-content: center;
+  }
+
   button {
-    width: 100%;
+    width: 50%;
     padding: 10px;
-    margin-top: 10px;
+    margin-top: 30px;
     background-color: #ff6600; /* Color del botón */
     color: #fff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    
   }
   
   button:hover {

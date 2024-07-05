@@ -43,7 +43,9 @@ function Login() {
             required
           />
         </div>
-        <button type="submit">Enviar</button>
+        <div className="button-container">
+          <button type="submit">Enviar</button>
+        </div>
       </form>
       </div>
     </div>
