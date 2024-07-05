@@ -1,34 +1,32 @@
-.panel {
+
+  .panel {
     width: 1200px;
-    height: 760px;
+    height: 800px;
     margin: 20px auto;
     border: 2px solid #ccc;
     border-radius: 20px;
-    background-color: #f9f9f9;
+    background-color: #ffffff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    /* border: 2px solid black; /* borde Header icono */
   }
   
   .header {
     background-color: #e65c00;
     color: white;
-    padding: 10px; /* Puedes ajustar o eliminar el padding según sea necesario */
+    padding: 10px;
     display: flex;
     align-items: center;
     width: 100%;
     box-sizing: border-box;
-    border-radius: 18px 18px 0 0; /* Aplica bordes redondeados solo a las esquinas superiores */
-}
+    border-radius: 18px 18px 0 0;
+  }
   
   .header .icon-lock {
     height: 40px;
     width: 40px;
-    background-image: url('/cargar.jpg') !important; /* Asegúrate de que la ruta sea correcta */
-    background-size: cover; /* Ajusta la imagen para cubrir el área del header */
+    background-image: url('/cargar.jpg') !important;
+    background-size: cover;
     background-position: center;
     margin-right: 10px;
-   
-    
   }
   
   .header span {
@@ -39,7 +37,6 @@
   .content {
     padding: 20px;
     height: 570px;
-    
   }
   
   .content h2 {
@@ -67,22 +64,19 @@
   
   .file-upload {
     background-color: #f1f1f1;
-    border: 1px solid #ccc;
     padding: 10px;
     border-radius: 4px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: left;
     cursor: pointer;
-    text-align: center;
+    text-align: left;
     transition: background-color 0.3s ease;
-    border: 2px solid rgb(247, 0, 255);/* borde Content */
   }
   
   .file-upload:hover {
     background-color: #f0f0f0;
-    
   }
   
   .file-upload-content {
@@ -91,14 +85,13 @@
     align-items: center;
     width: 100%;
     background-color: #c7c7c7;
-    border: 2px solid rgb(120, 20, 126);/* borde Subir archivo Content */
+    border: 1px solid #000000;
   }
   
   .file-button {
+    padding: 10px 15px;
     background-color: #e65c00;
     color: white;
-    border: 2px solid rgb(255, 238, 0);/* borde boton subir archivo*/
-    padding: 10px 15px;
     border-radius: 4px;
     cursor: pointer;
     display: flex;
@@ -119,21 +112,20 @@
     text-decoration: none;
     display: block;
     margin-top: 10px;
-    border: 2px solid rgb(0, 0, 0);/* Link de descarga*/
   }
   
   .submit-button {
-    background-color: #007bff;
+    background-color: #288ffd;
     color: white;
     border: none;
     padding: 10px 20px;
-    border-radius: 4px;
     cursor: pointer;
     margin-top: 20px;
     width: 100%;
     transition: background-color 0.3s ease;
+    width: 120px;
   }
   
   .submit-button:hover {
-    background-color: #0056b3;
+    background-color: #003063;
   }

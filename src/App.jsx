@@ -1,13 +1,17 @@
 import React from 'react';
-import Panel from './Panel';
+
 import './index.css';
+import Login from './login';
+
 
 
 function App() {
   return (
+    <body>
     <div className="Inicio">
-      <Panel/>
-    </div>
+      <Login/>
+    </div>    
+    </body>
   );
 }
 
