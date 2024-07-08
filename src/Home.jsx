@@ -7,10 +7,11 @@ import './Home.css';
 function Home() {
   return (
     <body>
-    <div>
-      <Panel/>
+      <div>
+      <Login/>
       
-    </div></body>
+      </div>
+    </body>
   );
 }
 

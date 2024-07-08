@@ -9,7 +9,7 @@
   }
   
   .header2 {
-    background-color: #e65c00;
+    background-color: #dd5900;
     color: white;
     padding: 10px 20px; /* Añadido un padding lateral */
     display: flex;
@@ -59,7 +59,7 @@
   .login-container2 h2 {
     text-align: center;
     margin-bottom: 20px;
-    color: #ff6600; /* Color del título */
+    color: #dd5900; /* Color del título */
   }
   
   .input-group2 {
@@ -89,7 +89,7 @@
     width: 50%;
     padding: 10px;
     margin-top: 10px;
-    background-color: #ff6600; /* Color del botón */
+    background-color: #dd5900; /* Color del botón */
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -97,7 +97,7 @@
   }
   
   button:hover {
-    background-color: #e65c00; /* Color del botón al pasar el mouse */
+    background-color: #993300; /* Color del botón al pasar el mouse */
   }
 /* Media Queries */
 @media (max-width: 768px) {
