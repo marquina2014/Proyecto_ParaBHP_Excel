@@ -5,20 +5,33 @@ import { useNavigate } from 'react-router-dom';
  function Login() {
     const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const userName = "admin"; // Username 
+  const passwordCorrect = '1234'; // Password 
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    //valida que los campos no esten vacios
+    if(username === '' || password === ''){
+      alert("Debe rellenar todos los campos")
+    }
+    
+    else if(username === userName && password === passwordCorrect){
+      alert("Si es la Contraseña");
+      navigate('/panel');
+  
     // Aquí puedes manejar el envío de los datos del formulario
     console.log('Username:', username);
     console.log('Password:', password);
+  }
+  else{
+    alert("Contraseña Incorrecta chaval, escribela bien");
+  }
+
   };
 
 /*Funcion que lleva a la pantalla Panel, SEXOOOOOOOOO */
   const navigate = useNavigate();
 
-  const handleLoginClick = () => {
-    navigate('/panel');
-  };
   return (
     <div className="panel2">
     <div className="header2">
@@ -52,7 +65,7 @@ import { useNavigate } from 'react-router-dom';
           />
         </div>
         <div className="button-container2">
-        <button className="submit" onClick={handleLoginClick}>Enviar</button>
+        <button className="submit" onClick={handleSubmit}>Enviar</button>
         </div>
       </form>
       </div>
