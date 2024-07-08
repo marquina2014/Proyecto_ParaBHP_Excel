@@ -53,6 +53,7 @@ function Panel() {
         <span>Cargar Archivo</span>
       </div>
       <div className="content">
+        <div className='Caja'>
         <h2>Cargar Archivo de Pre-Validación de HH</h2>
         <div className="form-group">
           <label htmlFor="area-select">Selecciona el Área</label>
@@ -93,6 +94,7 @@ function Panel() {
           Para descargar la plantilla con el formato correcto haga clic en este enlace
         </a>
         <button className="submit-button" onClick={handleLoginClick}>Enviar</button>
+          </div>
       </div>
     </div>
   );

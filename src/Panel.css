@@ -1,12 +1,14 @@
 .panel {
   width: 1000px;
-  height: 700px;
+  height: 750px;
   margin: 20px auto;
   border: 2px solid #ccc;
   border-radius: 20px;
   background-color: #ffffff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   overflow: hidden; /* Para asegurar que los bordes redondeados funcionen bien */
+  background-image: url("BHP.png");
+  background-size: cover;
 }
 
 .header {
@@ -38,26 +40,35 @@
 }
 
 .content {
-  height: 500px;
+  height: 650px;
   padding: 20px;
   padding-top: 0; /* Eliminar margen superior */
   display: flex;
   flex-direction: column;
   justify-content: left; /* Alinear elementos a la izquierda*/
   align-items: stretch; /* Asegurar que los elementos ocupen todo el ancho */
-  
+
 }
 
 .content h2 {
   font-size: 1.3em;
   margin-bottom: 25px;
 }
+.Caja{
 
+  width: 900px;
+  height: 510px;
+  margin: 20px 10px;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.75); /* Fondo semitransparente */
+
+
+}
 .form-group {
   font-size: 1.2em;
   margin-bottom: 30px;
   width: 97%; /* Asegura que los formularios ocupen todo el ancho disponible */
-  
 }
 
 .form-group label {
@@ -141,7 +152,7 @@
   transition: background-color 0.3s ease;
   width: 100%; /* Asegura que ocupe todo el ancho del contenedor padre */
   max-width: 150px; /* Limita el ancho máximo */
-  border: 1px solid #6b6b6b;
+  border: 1px solid #000000;
 }
 
 .submit-button:hover {
