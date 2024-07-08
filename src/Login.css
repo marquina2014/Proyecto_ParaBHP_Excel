@@ -1,4 +1,4 @@
-.panel {
+.panel2 {
     width: 1000px;
     height: 700px;
     margin: 20px auto;
@@ -8,10 +8,10 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   }
   
-  .header {
+  .header2 {
     background-color: #e65c00;
     color: white;
-    padding: 10px;
+    padding: 10px 20px; /* Añadido un padding lateral */
     display: flex;
     align-items: center;
     width: 100%;
@@ -20,28 +20,33 @@
     
   }
   
-  .header .icon-lock {
+  .header2 .icon-lock2 {
     height: 40px;
     width: 40px;
     background-image: url('/User.jpg') !important;
     background-size: cover;
     background-position: center;
     margin-right: 10px;
+
   }
   
-  .header span {
+  .header2 span {
     font-size: 2.5em;
     font-weight: bolder;
   }
 
-  .content {
-    padding: 120px;
-    height: 570px;
+  .content2 {
+    height: 500px;
+    padding: 20px;
+    padding-top: 120px; /* Eliminar margen superior */
+    display: flex;
+    flex-direction: column;
+    justify-content: left; /* Alinear elementos a la izquierda*/
+    align-items: stretch; /* Asegurar que los elementos ocupen todo el ancho */
   }
 
-
   /* login.css */
-.login-container {
+.login-container2 {
     width: 300px;
     margin: 0 auto;
     padding: 20px;
@@ -51,22 +56,22 @@
     background-color: #fff;
   }
   
-  .login-container h2 {
+  .login-container2 h2 {
     text-align: center;
     margin-bottom: 20px;
     color: #ff6600; /* Color del título */
   }
   
-  .input-group {
+  .input-group2 {
     margin-bottom: 15px;
   }
   
-  .input-group label {
+  .input-group2 label {
     display: block;
     margin-bottom: 5px;
   }
   
-  .input-group input {
+  .input-group2 input {
     width: 100%;
     padding: 8px;
     box-sizing: border-box;
@@ -75,7 +80,7 @@
   }
   
   /* Nuevo estilo para centrar el botón */
-  .button-container {
+  .button-container2 {
     display: flex;
     justify-content: center;
   }
@@ -94,3 +99,34 @@
   button:hover {
     background-color: #e65c00; /* Color del botón al pasar el mouse */
   }
+/* Media Queries */
+@media (max-width: 768px) {
+  .panel2 {
+      height: 100vh; /* Ocupa toda la altura de la pantalla */
+      border-radius: 0; /* Sin bordes redondeados */
+  }
+
+  .input-group2 input,
+  button {
+      width: 90%; /* Inputs y botón ocupan el 90% del ancho */
+      font-size: 1.2em; /* Aumenta el tamaño de fuente */
+  }
+}
+
+@media (max-width: 480px) {
+  .header2 span {
+      font-size: 2em;
+  }
+
+  .panel2 {
+      width: 100%;
+      height: 100vh; /* Ocupa toda la altura de la pantalla */
+      border-radius: 0; /* Sin bordes redondeados */
+  }
+
+  .input-group2 input,
+  button {
+      width: 95%; /* Inputs y botón ocupan el 95% del ancho */
+      font-size: 1.2em; /* Aumenta el tamaño de fuente */
+  }
+}

@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import './Login.css';
+import { useNavigate } from 'react-router-dom';
 
-function Login() {
+ function Login() {
     const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
@@ -11,19 +12,26 @@ function Login() {
     console.log('Username:', username);
     console.log('Password:', password);
   };
+
+/*Funcion que lleva a la pantalla Panel, SEXOOOOOOOOO */
+  const navigate = useNavigate();
+
+  const handleLoginClick = () => {
+    navigate('/panel');
+  };
   return (
-    <div className="panel">
-    <div className="header">
-      <i className="icon-lock"></i>
-      <span>LOGIN</span>
+    <div className="panel2">
+    <div className="header2">
+      <i className="icon-lock2"></i>
+      <span>Login</span>
       
       
     </div>
-    <div className="content">
-    <div className="login-container">
+    <div className="content2">
+    <div className="login-container2">
       <h2>Login</h2>
       <form onSubmit={handleSubmit}>
-        <div className="input-group">
+        <div className="input-group2">
           <label htmlFor="username">Nombre</label>
           <input
             type="text"
@@ -33,7 +41,7 @@ function Login() {
             required
           />
         </div>
-        <div className="input-group">
+        <div className="input-group2">
           <label htmlFor="password">Contraseña</label>
           <input
             type="password"
@@ -43,8 +51,8 @@ function Login() {
             required
           />
         </div>
-        <div className="button-container">
-          <button type="submit">Enviar</button>
+        <div className="button-container2">
+        <button className="submit" onClick={handleLoginClick}>Enviar</button>
         </div>
       </form>
       </div>

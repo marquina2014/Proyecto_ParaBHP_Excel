@@ -1,131 +1,193 @@
+.panel {
+  width: 1000px;
+  height: 700px;
+  margin: 20px auto;
+  border: 2px solid #ccc;
+  border-radius: 20px;
+  background-color: #ffffff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden; /* Para asegurar que los bordes redondeados funcionen bien */
+}
 
-  .panel {
-    width: 1200px;
-    height: 800px;
-    margin: 20px auto;
-    border: 2px solid #ccc;
-    border-radius: 20px;
-    background-color: #ffffff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
+.header {
+  background-color: #e65c00;
+  color: white;
+  padding: 10px 20px; /* Añadido un padding lateral */
+  display: flex;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 18px 18px 0 0;
+  border: 1px solid #000000;
   
-  .header {
-    background-color: #e65c00;
-    color: white;
-    padding: 10px;
-    display: flex;
-    align-items: center;
+}
+
+.header .icon-lock {
+  height: 40px;
+  width: 40px;
+  background-image: url('/cargar.jpg') !important;
+  background-size: cover;
+  background-position: center;
+  margin-right: 10px;
+
+}
+
+.header span {
+  font-size: 2.5em;
+  font-weight: bolder;
+}
+
+.content {
+  height: 500px;
+  padding: 20px;
+  padding-top: 0; /* Eliminar margen superior */
+  display: flex;
+  flex-direction: column;
+  justify-content: left; /* Alinear elementos a la izquierda*/
+  align-items: stretch; /* Asegurar que los elementos ocupen todo el ancho */
+  
+}
+
+.content h2 {
+  font-size: 1.3em;
+  margin-bottom: 25px;
+}
+
+.form-group {
+  font-size: 1.2em;
+  margin-bottom: 30px;
+  width: 97%; /* Asegura que los formularios ocupen todo el ancho disponible */
+  
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+
+}
+
+.select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box; /* Asegura que el padding no afecte el tamaño total */
+}
+
+.file-upload {
+  background-color: #f1f1f1;
+  padding: 10px;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  cursor: pointer;
+  text-align: left;
+  transition: background-color 0.3s ease;
+  
+}
+
+.file-upload:hover {
+  background-color: #f0f0f0;
+  
+}
+
+.file-upload-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 97%;
+  background-color: #c7c7c7;
+  padding: 10px; /* Añadido padding */
+  
+}
+
+.file-button {
+  padding: 10px 15px;
+  width: 200px;
+  background-color: #e65c00;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border: 1px solid #000000;
+}
+
+.file-button .icon-attach {
+  margin-right: 5px;
+}
+
+.file-button:hover {
+  background-color: #cc4c00;
+}
+
+.download-link {
+  color: #007bff;
+  text-decoration: none;
+  display: block;
+  margin-top: 10px;
+}
+
+.submit-button {
+  background-color: #005cbe;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  margin-top: 25px;
+  transition: background-color 0.3s ease;
+  width: 100%; /* Asegura que ocupe todo el ancho del contenedor padre */
+  max-width: 150px; /* Limita el ancho máximo */
+  border: 1px solid #000000;
+}
+
+.submit-button:hover {
+  background-color: #00264e;
+}
+/* Media queries para asegurar responsividad */
+@media (max-width: 768px) {
+  .panel {
+    height: 100vh;
+    width: 100%;
+    margin: 0;
+    border-radius: 0;
+  }
+
+  .header span {
+    font-size: 2em;
+  }
+
+  .content h2 {
+    font-size: 1.1em;
+  }
+
+  .form-group {
+    font-size: 1em;
+  }
+
+  .select,
+  .file-upload-content,
+  .file-button,
+  .submit-button {
     width: 100%;
     box-sizing: border-box;
-    border-radius: 18px 18px 0 0;
   }
-  
-  .header .icon-lock {
-    height: 40px;
-    width: 40px;
-    background-image: url('/cargar.jpg') !important;
-    background-size: cover;
-    background-position: center;
-    margin-right: 10px;
-  }
-  
-  .header span {
-    font-size: 2.5em;
-    font-weight: bolder;
-  }
-  
-  .content {
-    padding: 20px;
-    height: 570px;
-  }
-  
-  .content h2 {
-    font-size: 1.5em;
-    margin-bottom: 20px;
-  }
-  
-  .form-group {
-    font-size: 1.2em;
-    margin-bottom: 25px;
-  }
-  
-  .form-group label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-  }
-  
-  .select {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  .file-upload {
-    background-color: #f1f1f1;
-    padding: 10px;
-    border-radius: 4px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: left;
-    cursor: pointer;
-    text-align: left;
-    transition: background-color 0.3s ease;
-  }
-  
-  .file-upload:hover {
-    background-color: #f0f0f0;
-  }
-  
+
   .file-upload-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    background-color: #c7c7c7;
-    border: 1px solid #000000;
+    flex-direction: column;
+    padding: 10px;
   }
-  
+
   .file-button {
-    padding: 10px 15px;
-    background-color: #e65c00;
-    color: white;
-    border-radius: 4px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    transition: background-color 0.3s ease;
-  }
-  
-  .file-button .icon-attach {
-    margin-right: 5px;
-  }
-  
-  .file-button:hover {
-    background-color: #cc4c00;
-  }
-  
-  .download-link {
-    color: #007bff;
-    text-decoration: none;
-    display: block;
     margin-top: 10px;
   }
-  
-  .submit-button {
-    background-color: #288ffd;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
+
+  .download-link {
     margin-top: 20px;
-    width: 100%;
-    transition: background-color 0.3s ease;
-    width: 120px;
   }
-  
-  .submit-button:hover {
-    background-color: #003063;
+
+  .submit-button {
+    margin-top: 20px;
   }
+}
