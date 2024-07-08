@@ -10,7 +10,7 @@
 }
 
 .header {
-  background-color: #e65c00;
+  background-color: #dd5900;
   color: white;
   padding: 10px 20px; /* Añadido un padding lateral */
   display: flex;
@@ -85,6 +85,7 @@
   cursor: pointer;
   text-align: left;
   transition: background-color 0.3s ease;
+  border: 2px solid #ccc;
   
 }
 
@@ -106,12 +107,12 @@
 .file-button {
   padding: 10px 15px;
   width: 200px;
-  background-color: #e65c00;
+  background-color: #dd5900;
   color: white;
-  border-radius: 4px;
+  border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  border: 1px solid #000000;
+  border: 1px solid #3b3b3b;
 }
 
 .file-button .icon-attach {
@@ -119,7 +120,7 @@
 }
 
 .file-button:hover {
-  background-color: #cc4c00;
+  background-color: #993300;
 }
 
 .download-link {
@@ -130,20 +131,21 @@
 }
 
 .submit-button {
-  background-color: #005cbe;
+  background-color: #26C455;
   color: white;
   border: none;
+  border-radius: 5px;
   padding: 10px 20px;
   cursor: pointer;
   margin-top: 25px;
   transition: background-color 0.3s ease;
   width: 100%; /* Asegura que ocupe todo el ancho del contenedor padre */
   max-width: 150px; /* Limita el ancho máximo */
-  border: 1px solid #000000;
+  border: 1px solid #6b6b6b;
 }
 
 .submit-button:hover {
-  background-color: #00264e;
+  background-color: #0c9e38;
 }
 /* Media queries para asegurar responsividad */
 @media (max-width: 768px) {
