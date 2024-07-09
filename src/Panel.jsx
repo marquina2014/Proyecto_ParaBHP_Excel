@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
 import './Panel.css';
+import background from './assets/bhp.png'
 
 function Panel(props) {
   const [file, setFile] = useState(null);
@@ -45,7 +46,11 @@ function Panel(props) {
   };
 
   return (
-    <div className="panel">
+    <div className="panel"
+      style={{
+        backgroundImage: `URL(${background})`
+      }}
+    >
       <div className="header">
         <i className="icon-lock"></i>
         <span>Cargar Archivo</span>

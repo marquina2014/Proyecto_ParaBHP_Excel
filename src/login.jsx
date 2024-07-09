@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './Login.css';
+import background from './assets/bhp.png'
 
 function Login(props) {
   const [username, setUsername] = useState('');
@@ -29,7 +30,11 @@ function Login(props) {
   };
 
   return (
-    <div className="panel2">
+    <div className="panel2"
+      style={{
+        backgroundImage: `URL(${background})`
+      }}
+    >
     <div className="header2">
       <i className="icon-lock2"></i>
       <span>Login</span>
