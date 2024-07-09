@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import './Login.css';
-import { useNavigate } from 'react-router-dom';
 
- function Login() {
-    const [username, setUsername] = useState('');
+function Login(props) {
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const userName = "admin"; // Username 
   const passwordCorrect = '1234'; // Password 
@@ -17,7 +16,7 @@ import { useNavigate } from 'react-router-dom';
     
     else if(username === userName && password === passwordCorrect){
       alert("Si es la Contraseña");
-      navigate('/panel');
+      props.changeScreen('Panel')
   
     // Aquí puedes manejar el envío de los datos del formulario
     console.log('Username:', username);
@@ -28,9 +27,6 @@ import { useNavigate } from 'react-router-dom';
   }
 
   };
-
-/*Funcion que lleva a la pantalla Panel, SEXOOOOOOOOO */
-  const navigate = useNavigate();
 
   return (
     <div className="panel2">

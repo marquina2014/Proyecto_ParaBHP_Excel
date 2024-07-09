@@ -1,11 +1,9 @@
 import React, { useState, useRef } from 'react';
 import './Panel.css';
-import { useNavigate } from 'react-router-dom';
 
-function Panel() {
+function Panel(props) {
   const [file, setFile] = useState(null);
   const fileInputRef = useRef(null);
-  const navigate = useNavigate();
 
   const handleFileChange = (event) => {
     const selectedFile = event.target.files[0];
@@ -43,7 +41,7 @@ function Panel() {
   };
 
   const handleLoginClick = () => {
-    navigate('/Login');
+    props.changeScreen('Login')
   };
 
   return (

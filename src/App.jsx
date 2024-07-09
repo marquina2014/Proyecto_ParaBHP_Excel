@@ -1,19 +1,19 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import React, { useState } from 'react';
 import Login from './Login';  // Asegúrate de que esta ruta es correcta
 import Panel from './Panel';
 
 function App() {
-  return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Login/>} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/panel" element={<Panel />} />
-        
-      </Routes>
-    </Router>
-  );
+
+  const [screen, setScreen] = useState("Login")
+
+  const changeScreen = (screenName) =>{
+    setScreen(screenName)
+  }
+
+  switch(screen){
+    case 'Login': return(<Login changeScreen={changeScreen} />)
+    case 'Panel': return(<Panel changeScreen={changeScreen} />)
+  }
 }
 
 export default App;
