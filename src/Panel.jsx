@@ -61,11 +61,12 @@ function Panel(props) {
         <div className="form-group">
           <label htmlFor="area-select">Selecciona el Área</label>
           <select id="area-select" className="select">
-            <option>Opcion 1</option>
-            <option>Opcion 2</option>
-            <option>Opcion 3</option>
-            <option>Opcion 4</option>
-            <option>Opcion 5</option>
+            <option>Catodos</option>
+            <option>Mina</option>
+            <option>NPI&CHO</option>
+            <option>Planning&Governance</option>
+            <option>Transversales</option>
+            <option>Concentradoras</option>
           </select>
         </div>
         <div 
