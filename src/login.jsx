@@ -42,7 +42,7 @@ import { useNavigate } from 'react-router-dom';
     </div>
     <div className="content2">
     <div className="login-container2">
-      <h2>Inicio De Sesion</h2>
+      <h2>Inicio De Sesión</h2>
       <form onSubmit={handleSubmit}>
         <div className="input-group2">
           <label htmlFor="username">Nombre</label>
