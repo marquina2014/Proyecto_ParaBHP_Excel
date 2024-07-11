@@ -7,41 +7,7 @@ function Login(props) {
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const [loggingIn, setLoggingIn] = useState(false); // Estado para manejar el mensaje de "Entrando..."
-  const [aid, setAid] = useState(null);
-
-  useEffect(() => {
-    const params = new URLSearchParams(document.location.search);
-    const getAID = params.get('aid');
-    setAid(getAID);
-
-    fetch(
-      "https://prod2-08.brazilsouth.logic.azure.com:443/workflows/2b574b1aaa414db19f733f218d1a9560/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=eDolAiazNNPeOvUFFbPmPTCE2LWX8W0MDCtAv3SaSbk",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          method: "post",
-          controller: "Login",
-          data: `{aid: '${getAID}'}`
-        })
-      }
-    ).then(response => {
-      if (response.status === 200) {
-        response.json().then(data => {
-          // Manejar los datos de la respuesta según sea necesario
-          setLoading(false);
-        });
-      } else {
-        // Aquí puedes manejar la respuesta no exitosa, por ejemplo mostrando un mensaje de error
-        console.error('Error verificando AID:', response.statusText);
-      }
-
-    }).catch(error => {
-      console.error('Error en la solicitud de verificación de AID:', error);
-    });
-  }, []);
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -64,7 +30,7 @@ function Login(props) {
           body: JSON.stringify({
             method: "post",
             controller: "Login",
-            data: `{user: '${username}', pwd: '${password}', aid: '${aid}'}`
+            data: `{user: '${username}', pwd: '${password}'}`
           })
         }
       );
@@ -72,6 +38,11 @@ function Login(props) {
       if (response.ok) {
         const data = await response.json();
         console.log('Respuesta del servidor:', data);
+
+        props.pushArea(
+          data.areasPermitadas.map(i=> i.Value)
+        )
+
         setLoading(false);
         setLoggingIn(true); // Muestra mensaje de "Entrando..."
         setTimeout(() => {

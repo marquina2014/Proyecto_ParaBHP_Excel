@@ -7,39 +7,6 @@ function Panel(props) {
   const fileInputRef = useRef(null);
   const [areas, setAreas] = useState([]);
 
-  useEffect(() => {
-    const fetchAreas = async () => {
-      try {
-        const response = await fetch('https://prod2-24.brazilsouth.logic.azure.com:443/workflows/dee3e41beb7242f58928d11c65d2470b/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=SPKH1WvfZzx6B9SrlwkXPXrbmbNGNJjJbFsEHbWvjLo', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({})
-        });
-
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-
-        const data = await response.json();
-        console.log('Fetch response data:', data); // Log para depuración
-
-        if (data.ok) {
-          const areasValues = data.areasPermitidas.map(area => area.Value);
-          console.log('Areas permitidas:', areasValues); // Log para depuración
-          setAreas(areasValues);
-        } else {
-          alert('Error fetching areas');
-        }
-      } catch (error) {
-        console.error('Error fetching areas:', error);
-      }
-    };
-
-    fetchAreas();
-  }, []);
-
   const handleFileChange = (event) => {
     const selectedFile = event.target.files[0];
     if (selectedFile && (selectedFile.type === 'application/vnd.ms-excel' || selectedFile.type === 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')) {
