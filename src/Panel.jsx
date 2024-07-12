@@ -1,7 +1,8 @@
 import React, { useState, useRef } from 'react';
-import './Panel.css';
 import background from './assets/bhp.png';
+import './Panel.css';
 import { Modal } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css'; // Importar Bootstrap CSS
 
 function Panel(props) {
   const { areas, user } = props;
@@ -9,18 +10,22 @@ function Panel(props) {
   const [base64String, setBase64String] = useState('');
   const [selectedArea, setSelectedArea] = useState('');
   const fileInputRef = useRef(null);
-  const [modalShow, setModalShow] = useState(true);
+  const [modalShow, setModalShow] = useState(false);
   const [loggingIn, setLoggingIn] = useState(false); // Estado para manejar el mensaje de "Enviando.."
   const [loading, setLoading] = useState(false);
+  const [warning, setWarning] = useState(''); // Estado para manejar el mensaje de advertencia
 
   const handleClose = () => {
     setModalShow(false);
+    alert('Cerrando Sesion.');
     setTimeout(() => {
       props.changeScreen('Login'); // Cambia de pantalla después de un breve retraso para mostrar el mensaje
-    }, 1000); // Retraso de 1 segundo
+    }, 1500); // Retraso de 1.5 segundos
   };
 
   const Reset = () => {
+    setSelectedArea('');
+    setFile(null);
     setModalShow(false);
     setTimeout(() => {
       props.changeScreen('Panel'); // Cambia de pantalla después de un breve retraso para mostrar el mensaje
@@ -32,6 +37,7 @@ function Panel(props) {
     if (selectedFile && (selectedFile.type === 'application/vnd.ms-excel' || selectedFile.type === 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')) {
       setFile(selectedFile);
       convertToBase64(selectedFile);
+      setWarning(''); // Limpiar el mensaje de advertencia cuando se selecciona un archivo válido
     } else {
       alert('Solo se permiten archivos Excel.');
     }
@@ -43,6 +49,7 @@ function Panel(props) {
     if (droppedFile && (droppedFile.type === 'application/vnd.ms-excel' || droppedFile.type === 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')) {
       setFile(droppedFile);
       convertToBase64(droppedFile);
+      setWarning(''); // Limpiar el mensaje de advertencia cuando se agrega un archivo válido por arrastrar y soltar
     } else {
       alert('Solo se permiten archivos Excel.');
     }
@@ -75,6 +82,12 @@ function Panel(props) {
   };
 
   const EnviarExcel = () => {
+    if (!selectedArea || !file) {
+      setWarning('Por favor, seleccione un área y cargue un archivo Excel.');
+      return;
+    }
+
+    setWarning(''); // Limpiar el mensaje de advertencia cuando se envía el archivo correctamente
     setLoggingIn(true); // Muestra mensaje de "Enviando..."
     setLoading(true);
     const bodyContent = JSON.stringify({
@@ -97,8 +110,7 @@ function Panel(props) {
     .then(data => {
       setModalShow(true);
       setLoggingIn(false); 
-    setLoading(false);
-
+      setLoading(false);
     })
     .catch((error) => {
       console.error('Error:', error);
@@ -106,83 +118,85 @@ function Panel(props) {
   };
 
   return (
-    <>
-      <div className="panel"
-        style={{
-          backgroundImage: `URL(${background})`
-        }}
-      >
-        <div className="header">
-          <i className="icon-lock"></i>
-          <span>Cargar Archivo</span>
-        </div>
-        <div className="content">
-          <div className='Caja'>
-            <h2>Cargar Archivo de Pre-Validación de HH</h2>
-            <div className="form-group">
-              <label htmlFor="area-select">Selecciona el Área</label>
-              <select 
-                id="area-select" 
-                className="select"
-                onChange={(e) => setSelectedArea(e.target.value)}
-              >
-                <option value="">Seleccione un área</option>
-                {areas.map((area, index) => (
-                  <option key={index} value={area}>{area}</option>
-                ))}
-              </select>
-            </div>
-            <div 
-              className="form-group file-upload" 
-              onDrop={handleDrop} 
-              onDragOver={handleDragOver}
+    <div className="panel"
+      style={{
+        backgroundImage: `URL(${background})`
+      }}
+    >
+      <div className="header">
+        <i className="icon-lock"></i>
+        <span>Cargar Archivo</span>
+      </div>
+      <div className="content">
+        <div className='Caja'>
+          <h2>Cargar Archivo de Pre-Validación de HH</h2>
+          <div className="form-group">
+            <label htmlFor="area-select">Selecciona el Área</label>
+            <select 
+              id="area-select" 
+              className="select"
+              value={selectedArea}
+              onChange={(e) => {
+                setSelectedArea(e.target.value);
+                if (e.target.value) setWarning(''); // Limpiar el mensaje de advertencia cuando se selecciona un área
+              }}
             >
-              <label>Cargue un Archivo excel con el formato correcto *</label>
-              <div className="file-upload-content" onClick={handleClick}>
-                <input 
-                  type="file" 
-                  ref={fileInputRef} 
-                  style={{ display: 'none' }} 
-                  onChange={handleFileChange} 
-                  accept=".xls,.xlsx"
-                />
-                {file ? (
-                  <p>{file.name}</p>
-                ) : (
-                  <p>Sin Archivos.</p>
-                )}
-                <button className="file-button" onClick={handleFileButtonClick}>
-                  <i className="icon-attach"></i>
-                  Cargar Archivo
-                </button>
-              </div>
+              <option value="">Seleccione un área</option>
+              {areas.map((area, index) => (
+                <option key={index} value={area}>{area}</option>
+              ))}
+            </select>
+          </div>
+          <div 
+            className="form-group file-upload" 
+            onDrop={handleDrop} 
+            onDragOver={handleDragOver}
+          >
+            <label>Cargue un Archivo excel con el formato correcto *</label>
+            <div className="file-upload-content" onClick={handleClick}>
+              <input 
+                type="file" 
+                ref={fileInputRef} 
+                style={{ display: 'none' }} 
+                onChange={handleFileChange} 
+                accept=".xls,.xlsx"
+              />
+              {file ? (
+                <p>{file.name}</p>
+              ) : (
+                <p>Sin Archivos.</p>
+              )}
+              <button className="file-button" onClick={handleFileButtonClick}>
+                <i className="icon-attach"></i>
+                Cargar Archivo
+              </button>
             </div>
-            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley" className="download-link" target="_blank" rel="noopener noreferrer">
-              Para descargar la plantilla con el formato correcto haga clic en este enlace
-            </a>
-
-                <div className="button-container2">
-                  <button type="submit" className="submit-button" disabled={loading} onClick={EnviarExcel}>
-                    {loading ? 'Enviando...' : 'Enviar'}
-                  </button>
-                </div>
+          </div>
+          <a href="/plantilla(1).xlsx" className="download-link" download>
+            Para descargar la plantilla con el formato correcto haga clic en este enlace
+          </a>
+          {warning && <div className="warning-message">{warning}</div>}
+          <div className="button-container2">
+            <button 
+              type="submit" 
+              className="submit-button" 
+              disabled={loading} 
+              onClick={EnviarExcel}
+            >
+              {loading ? 'Enviando...' : 'Enviar'}
+            </button>
           </div>
         </div>
-        
       </div>
-
-      <Modal 
-        show={false/* modalShow */} 
-        onHide={handleClose} 
-        >
-        <Modal.Header closeButton>
+      <Modal show={modalShow} centered backdrop="static" keyboard={false}>
+        <Modal.Header>
           <Modal.Title>Reenvio De Excel</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <p>¿Quieres Enviar Otro Archivo?</p>
         </Modal.Body>
         <Modal.Footer>
-          <button className="file-button" onClick={Reset}>
+          <button className="submit-button" onClick={Reset}>
             Si
           </button>
           <button className="file-button" onClick={handleClose}>
@@ -190,7 +204,7 @@ function Panel(props) {
           </button>
         </Modal.Footer>
       </Modal>
-    </>
+    </div>
   );
 }
 

@@ -1,6 +1,6 @@
 .panel2 {
     width: 1000px;
-    height: 750px;
+    height: 800px;
     margin: 20px auto;
     border: 2px solid #ccc;
     border-radius: 20px;
@@ -38,7 +38,7 @@
   }
 
   .content2 {
-    height: 550px;
+    height: 600px;
     padding: 20px;
     display: flex;
     flex-direction: column; /* Alinear en columna */
@@ -94,7 +94,7 @@
     background-color: #dd5900; /* Color del botón */
     color: #fff;
     border: none;
-    border-radius: 5px;
+    border-radius: 5px !important;
     cursor: pointer;
     max-width: 150px;
     border: 1px solid #000000;
