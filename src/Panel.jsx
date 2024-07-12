@@ -9,7 +9,7 @@ function Panel(props) {
   const [base64String, setBase64String] = useState('');
   const [selectedArea, setSelectedArea] = useState('');
   const fileInputRef = useRef(null);
-  const [modalShow, setModalShow] = useState(false);
+  const [modalShow, setModalShow] = useState(true);
   const [loggingIn, setLoggingIn] = useState(false); // Estado para manejar el mensaje de "Enviando.."
   const [loading, setLoading] = useState(false);
 
@@ -106,72 +106,75 @@ function Panel(props) {
   };
 
   return (
-    <div className="panel"
-      style={{
-        backgroundImage: `URL(${background})`
-      }}
-    >
-      <div className="header">
-        <i className="icon-lock"></i>
-        <span>Cargar Archivo</span>
-      </div>
-      <div className="content">
-        <div className='Caja'>
-          <h2>Cargar Archivo de Pre-Validación de HH</h2>
-          <div className="form-group">
-            <label htmlFor="area-select">Selecciona el Área</label>
-            <select 
-              id="area-select" 
-              className="select"
-              onChange={(e) => setSelectedArea(e.target.value)}
-            >
-              <option value="">Seleccione un área</option>
-              {areas.map((area, index) => (
-                <option key={index} value={area}>{area}</option>
-              ))}
-            </select>
-          </div>
-          <div 
-            className="form-group file-upload" 
-            onDrop={handleDrop} 
-            onDragOver={handleDragOver}
-          >
-            <label>Cargue un Archivo excel con el formato correcto *</label>
-            <div className="file-upload-content" onClick={handleClick}>
-              <input 
-                type="file" 
-                ref={fileInputRef} 
-                style={{ display: 'none' }} 
-                onChange={handleFileChange} 
-                accept=".xls,.xlsx"
-              />
-              {file ? (
-                <p>{file.name}</p>
-              ) : (
-                <p>Sin Archivos.</p>
-              )}
-              <button className="file-button" onClick={handleFileButtonClick}>
-                <i className="icon-attach"></i>
-                Cargar Archivo
-              </button>
+    <>
+      <div className="panel"
+        style={{
+          backgroundImage: `URL(${background})`
+        }}
+      >
+        <div className="header">
+          <i className="icon-lock"></i>
+          <span>Cargar Archivo</span>
+        </div>
+        <div className="content">
+          <div className='Caja'>
+            <h2>Cargar Archivo de Pre-Validación de HH</h2>
+            <div className="form-group">
+              <label htmlFor="area-select">Selecciona el Área</label>
+              <select 
+                id="area-select" 
+                className="select"
+                onChange={(e) => setSelectedArea(e.target.value)}
+              >
+                <option value="">Seleccione un área</option>
+                {areas.map((area, index) => (
+                  <option key={index} value={area}>{area}</option>
+                ))}
+              </select>
             </div>
-          </div>
-          <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley" className="download-link" target="_blank" rel="noopener noreferrer">
-            Para descargar la plantilla con el formato correcto haga clic en este enlace
-          </a>
-
-              <div className="button-container2">
-                <button type="submit" className="submit-button" disabled={loading} onClick={EnviarExcel}>
-                  {loading ? 'Enviando...' : 'Enviar'}
+            <div 
+              className="form-group file-upload" 
+              onDrop={handleDrop} 
+              onDragOver={handleDragOver}
+            >
+              <label>Cargue un Archivo excel con el formato correcto *</label>
+              <div className="file-upload-content" onClick={handleClick}>
+                <input 
+                  type="file" 
+                  ref={fileInputRef} 
+                  style={{ display: 'none' }} 
+                  onChange={handleFileChange} 
+                  accept=".xls,.xlsx"
+                />
+                {file ? (
+                  <p>{file.name}</p>
+                ) : (
+                  <p>Sin Archivos.</p>
+                )}
+                <button className="file-button" onClick={handleFileButtonClick}>
+                  <i className="icon-attach"></i>
+                  Cargar Archivo
                 </button>
               </div>
+            </div>
+            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley" className="download-link" target="_blank" rel="noopener noreferrer">
+              Para descargar la plantilla con el formato correcto haga clic en este enlace
+            </a>
+
+                <div className="button-container2">
+                  <button type="submit" className="submit-button" disabled={loading} onClick={EnviarExcel}>
+                    {loading ? 'Enviando...' : 'Enviar'}
+                  </button>
+                </div>
+          </div>
         </div>
-      </div>
-      <Modal 
-        show={modalShow} 
-        onHide={handleClose} 
         
-      >
+      </div>
+
+      <Modal 
+        show={false/* modalShow */} 
+        onHide={handleClose} 
+        >
         <Modal.Header closeButton>
           <Modal.Title>Reenvio De Excel</Modal.Title>
         </Modal.Header>
@@ -186,8 +189,8 @@ function Panel(props) {
             No
           </button>
         </Modal.Footer>
-      </Modal> 
-    </div>
+      </Modal>
+    </>
   );
 }
 

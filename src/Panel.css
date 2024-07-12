@@ -1,3 +1,13 @@
+.prueba{
+  background-color: #fff;
+  opacity: 70%;
+  width: 100vw;
+  height: 98vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
 .panel {
   width: 1000px;
   height: 750px;
@@ -62,15 +72,16 @@
   }
   
   .form-group {
-  font-size: 1.2em;
-  margin-bottom: 30px;
-  width: 97%; /* Asegura que los formularios ocupen todo el ancho disponible */
+    font-size: 1.2em;
+    margin-bottom: 30px;
+    
   }
   
   .form-group label {
-  display: block;
-  margin-bottom: 10px;
-  font-weight: bold;
+    font-size: .9em;
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
   }
   
   .select {
@@ -103,9 +114,11 @@
   justify-content: space-between;
   align-items: center;
   width: 97%;
+  font-size: .6em;
   background-color: #c7c7c7;
   padding: 10px; /* Añadido padding */
   }
+
   
   .file-button {
   padding: 10px 15px;
@@ -153,117 +166,87 @@
   
   /* Media queries para asegurar responsividad */
   @media (max-width: 1200px) {
-  .panel {
-  width: 100%;
-  height: auto;
-  }
-  .Caja {
-  width: 90%;
-  }
-  .header span {
-  font-size: 1.8em;
-  }
-  .form-group {
-  font-size: 1.1em;
-  }
+    .panel {
+    width: 100%;
+    height: auto;
+    }
+    .Caja {
+    width: 90%;
+    }
+    .header span {
+    font-size: 1.8em;
+    }
+    .form-group {
+    font-size: 1.1em;
+    }
   }
   
   @media (max-width: 768px) {
-  .panel {
-  width: 100%;
-  height: auto;
-  }
-  .Caja {
-  width: 90%;
-  }
-  .header span {
-  font-size: 1.5em;
-  }
-  .form-group {
-  font-size: 1em;
-  }
-  .file-upload-content,
-  .file-button,
-  .submit-button {
-  width: 100%;
-  box-sizing: border-box;
-  }
-  .file-upload-content {
-  flex-direction: column;
-  padding: 10px;
-  }
-  .file-button {
-  margin-top: 10px;
-  }
-  .download-link {
-  margin-top: 20px;
-  }
-  .submit-button {
-  margin-top: 20px;
-  }
+    .panel {
+    width: 100%;
+    height: auto;
+    }
+    .Caja {
+    width: 90%;
+    }
+    .header span {
+    font-size: 1.5em;
+    }
+    .form-group {
+    font-size: 1em;
+    }
+    .file-upload-content,
+    .file-button,
+    .submit-button {
+    width: 100%;
+    box-sizing: border-box;
+    }
+    .file-upload-content {
+    flex-direction: column;
+    padding: 10px;
+    }
+    .file-button {
+    margin-top: 10px;
+    }
+    .download-link {
+    margin-top: 20px;
+    }
+    .submit-button {
+    margin-top: 20px;
+    }
   }
   
   @media (max-width: 480px) {
-  .header span {
-  font-size: 1.2em;
-  }
-  .panel {
-  width: 95%;
-  border: 2px solid #000000;
-  }
-  .form-group {
-  font-size: 0.9em;
-  }
-  .file-upload-content,
-  .file-button,
-  .submit-button {
-  width: 95%;
-  box-sizing: border-box;
-  }
-  .file-upload-content {
-  flex-direction: column;
-  padding: 5px;
-  }
-  .file-button {
-  margin-top: 5px;
-  }
-  .download-link {
-  margin-top: 15px;
-  font-size: 0.9em;
-  }
-  .submit-button {
-  margin-top: 15px;
-  }
-  }
-  
-  .modal-content {
-  border: 1px solid #000000;
-  background-color: #f8f9fa;
-  border-radius: 8px;
-  padding: 20px;
+    .header span {
+    font-size: 1.2em;
+    }
+    .panel {
+    width: 95%;
+    border: 2px solid #000000;
+    }
+    .form-group {
+    font-size: 0.9em;
+    }
+    .file-upload-content,
+    .file-button,
+    .submit-button {
+    width: 95%;
+    box-sizing: border-box;
+    }
+    .file-upload-content {
+    flex-direction: column;
+    padding: 5px;
+    }
+    .file-button {
+    margin-top: 5px;
+    }
+    .download-link {
+    margin-top: 15px;
+    font-size: 0.9em;
+    }
+    .submit-button {
+    margin-top: 15px;
+    }
   }
   
-  .modal-header {
-  border-bottom: none;
-  }
   
-  .modal-title {
-  color: #343a40;
-  }
-  
-  .modal-body {
-  font-size: 16px;
-  color: #6c757d;
-  }
-  
-  .modal-footer {
-  border-top: none;
-  }
-  
-  .modal-footer .file-button {
-  margin: 0 10px;
-  }
-  
-  .modal-backdrop {
-  background-color: rgba(0, 0, 0, 0.5);
-  }
