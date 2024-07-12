@@ -6,6 +6,7 @@ function App() {
 
   const [screen, setScreen] = useState("Login")
   const [areas, setAreas] = useState([])
+  const [user, setUser] = useState();
 
   const changeScreen = (screenName) =>{
     setScreen(screenName)
@@ -21,8 +22,8 @@ function App() {
   }
 
   switch(screen){
-    case 'Login': return(<Login changeScreen={changeScreen} pushArea={pushArea}/>)
-    case 'Panel': return(<Panel changeScreen={changeScreen} areas={areas} />)
+    case 'Login': return(<Login changeScreen={changeScreen} pushArea={pushArea} setUser={setUser}/>)
+    case 'Panel': return(<Panel changeScreen={changeScreen} areas={areas}   user={user} />)
   }
 }
 

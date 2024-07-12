@@ -1,16 +1,37 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 import './Panel.css';
 import background from './assets/bhp.png';
+import { Modal } from 'react-bootstrap';
 
 function Panel(props) {
+  const { areas, user } = props;
   const [file, setFile] = useState(null);
+  const [base64String, setBase64String] = useState('');
+  const [selectedArea, setSelectedArea] = useState('');
   const fileInputRef = useRef(null);
-  const [areas, setAreas] = useState([]);
+  const [modalShow, setModalShow] = useState(false);
+  const [loggingIn, setLoggingIn] = useState(false); // Estado para manejar el mensaje de "Enviando.."
+  const [loading, setLoading] = useState(false);
+
+  const handleClose = () => {
+    setModalShow(false);
+    setTimeout(() => {
+      props.changeScreen('Login'); // Cambia de pantalla después de un breve retraso para mostrar el mensaje
+    }, 1000); // Retraso de 1 segundo
+  };
+
+  const Reset = () => {
+    setModalShow(false);
+    setTimeout(() => {
+      props.changeScreen('Panel'); // Cambia de pantalla después de un breve retraso para mostrar el mensaje
+    }, 1000); // Retraso de 1 segundo
+  };
 
   const handleFileChange = (event) => {
     const selectedFile = event.target.files[0];
     if (selectedFile && (selectedFile.type === 'application/vnd.ms-excel' || selectedFile.type === 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')) {
       setFile(selectedFile);
+      convertToBase64(selectedFile);
     } else {
       alert('Solo se permiten archivos Excel.');
     }
@@ -21,6 +42,7 @@ function Panel(props) {
     const droppedFile = event.dataTransfer.files[0];
     if (droppedFile && (droppedFile.type === 'application/vnd.ms-excel' || droppedFile.type === 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')) {
       setFile(droppedFile);
+      convertToBase64(droppedFile);
     } else {
       alert('Solo se permiten archivos Excel.');
     }
@@ -36,14 +58,51 @@ function Panel(props) {
 
   const handleFileButtonClick = () => {
     if (!file) {
-      alert('Por favor, cargue un archivo Excel antes de continuar.');
       return;
     }
     // Aquí puedes añadir cualquier lógica adicional que necesites para manejar el archivo cargado
   };
 
-  const handleLoginClick = () => {
-    props.changeScreen('Login');
+  const convertToBase64 = (file) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => {
+      setBase64String(reader.result);
+    };
+    reader.onerror = (error) => {
+      console.error('Error al convertir archivo a base64:', error);
+    };
+  };
+
+  const EnviarExcel = () => {
+    setLoggingIn(true); // Muestra mensaje de "Enviando..."
+    setLoading(true);
+    const bodyContent = JSON.stringify({
+      method: 'post',
+      controller: 'SendFile',
+      data: `{area: '${selectedArea}', userName:'${user}', excel: '${base64String}'}`
+      ,
+    });
+
+    console.log('Body content to send:', bodyContent);
+
+    fetch('https://prod2-24.brazilsouth.logic.azure.com:443/workflows/dee3e41beb7242f58928d11c65d2470b/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=SPKH1WvfZzx6B9SrlwkXPXrbmbNGNJjJbFsEHbWvjLo', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: bodyContent,
+    })
+    .then(response => response.json())
+    .then(data => {
+      setModalShow(true);
+      setLoggingIn(false); 
+    setLoading(false);
+
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+    });
   };
 
   return (
@@ -61,7 +120,12 @@ function Panel(props) {
           <h2>Cargar Archivo de Pre-Validación de HH</h2>
           <div className="form-group">
             <label htmlFor="area-select">Selecciona el Área</label>
-            <select id="area-select" className="select">
+            <select 
+              id="area-select" 
+              className="select"
+              onChange={(e) => setSelectedArea(e.target.value)}
+            >
+              <option value="">Seleccione un área</option>
               {areas.map((area, index) => (
                 <option key={index} value={area}>{area}</option>
               ))}
@@ -95,9 +159,34 @@ function Panel(props) {
           <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley" className="download-link" target="_blank" rel="noopener noreferrer">
             Para descargar la plantilla con el formato correcto haga clic en este enlace
           </a>
-          <button className="submit-button" onClick={handleLoginClick}>Enviar</button>
+
+              <div className="button-container2">
+                <button type="submit" className="submit-button" disabled={loading} onClick={EnviarExcel}>
+                  {loading ? 'Enviando...' : 'Enviar'}
+                </button>
+              </div>
         </div>
       </div>
+      <Modal 
+        show={modalShow} 
+        onHide={handleClose} 
+        
+      >
+        <Modal.Header closeButton>
+          <Modal.Title>Reenvio De Excel</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <p>¿Quieres Enviar Otro Archivo?</p>
+        </Modal.Body>
+        <Modal.Footer>
+          <button className="file-button" onClick={Reset}>
+            Si
+          </button>
+          <button className="file-button" onClick={handleClose}>
+            No
+          </button>
+        </Modal.Footer>
+      </Modal> 
     </div>
   );
 }

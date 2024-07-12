@@ -42,12 +42,13 @@ function Login(props) {
         props.pushArea(
           data.areasPermitadas.map(i=> i.Value)
         )
+        props.setUser(username);
 
         setLoading(false);
         setLoggingIn(true); // Muestra mensaje de "Entrando..."
         setTimeout(() => {
           props.changeScreen('Panel'); // Cambia de pantalla después de un breve retraso para mostrar el mensaje
-        }, 2500); // Retraso de 2.5 segundos
+        }, 1000); // Retraso de 1 segundo
       } else {
         console.error('Error en la solicitud:', response.statusText);
         alert("Contraseña Incorrecta");
