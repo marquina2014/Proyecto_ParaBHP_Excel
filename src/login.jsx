@@ -37,12 +37,17 @@ function Login(props) {
 
       if (response.ok) {
         const data = await response.json();
-        console.log('Respuesta del servidor:', data);
+       
 
         props.pushArea(
           data.areasPermitadas.map(i=> i.Value)
+         
         )
         props.setUser(username);
+
+        props.setUID(
+          data.UID
+          );
 
         setLoading(false);
         setLoggingIn(true); // Muestra mensaje de "Entrando..."

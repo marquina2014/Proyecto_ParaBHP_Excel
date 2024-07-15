@@ -100,7 +100,7 @@
   justify-content: space-between;
   align-items: center;
   width: 97%;
-  font-size: .6em;
+  font-size: .8em;
   background-color: #c7c7c7;
   padding: 10px; /* Añadido padding */
   }
@@ -116,6 +116,7 @@
   transition: background-color 0.3s ease;
   border: 1px solid #3b3b3b;
   }
+
   
   .file-button .icon-attach {
   margin-right: 5px;
@@ -124,6 +125,23 @@
   .file-button:hover {
   background-color: #993300;
   }
+  .file-button2 {
+    padding: 10px 15px;
+    width: 200px;
+    background-color: #ff0000;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border: 1px solid #3b3b3b;
+    }
+    .file-button2 .icon-attach {
+      margin-right: 5px;
+      }
+      
+      .file-button2:hover {
+      background-color: #993300;
+      }
   
   .download-link {
   color: #007bff;

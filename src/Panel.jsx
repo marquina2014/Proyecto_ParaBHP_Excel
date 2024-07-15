@@ -5,7 +5,7 @@ import { Modal } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css'; // Importar Bootstrap CSS
 
 function Panel(props) {
-  const { areas, user } = props;
+  const { areas, user, UID } = props;
   const [file, setFile] = useState(null);
   const [base64String, setBase64String] = useState('');
   const [selectedArea, setSelectedArea] = useState('');
@@ -60,11 +60,12 @@ function Panel(props) {
   };
 
   const handleClick = () => {
+    if (loading) return; // Evitar acción si está cargando
     fileInputRef.current.click();
   };
 
   const handleFileButtonClick = () => {
-    if (!file) {
+    if (loading || !file) { // Evitar acción si está cargando
       return;
     }
     // Aquí puedes añadir cualquier lógica adicional que necesites para manejar el archivo cargado
@@ -82,8 +83,14 @@ function Panel(props) {
   };
 
   const EnviarExcel = () => {
+    if (loading) return; // Evitar acción si está cargando
     if (!selectedArea || !file) {
       setWarning('Por favor, seleccione un área y cargue un archivo Excel.');
+      return;
+    }
+
+    if (!UID) {
+      setWarning('El UID es requerido para enviar el archivo.');
       return;
     }
 
@@ -93,11 +100,10 @@ function Panel(props) {
     const bodyContent = JSON.stringify({
       method: 'post',
       controller: 'SendFile',
-      data: `{area: '${selectedArea}', userName:'${user}', excel: '${base64String}'}`
+      data: `{area: '${selectedArea}', excel: '${base64String}', UID: '${UID}'}`
       ,
     });
 
-    console.log('Body content to send:', bodyContent);
 
     fetch('https://prod2-24.brazilsouth.logic.azure.com:443/workflows/dee3e41beb7242f58928d11c65d2470b/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=SPKH1WvfZzx6B9SrlwkXPXrbmbNGNJjJbFsEHbWvjLo', {
       method: 'POST',
@@ -114,6 +120,8 @@ function Panel(props) {
     })
     .catch((error) => {
       console.error('Error:', error);
+      setLoggingIn(false); 
+      setLoading(false);
     });
   };
 
@@ -166,7 +174,11 @@ function Panel(props) {
               ) : (
                 <p>Sin Archivos.</p>
               )}
-              <button className="file-button" onClick={handleFileButtonClick}>
+              <button 
+                className="file-button" 
+                onClick={handleFileButtonClick}
+                disabled={loading} // Deshabilitar el botón si está cargando
+              >
                 <i className="icon-attach"></i>
                 Cargar Archivo
               </button>
@@ -199,7 +211,7 @@ function Panel(props) {
           <button className="submit-button" onClick={Reset}>
             Si
           </button>
-          <button className="file-button" onClick={handleClose}>
+          <button className="file-button2" onClick={handleClose}>
             No
           </button>
         </Modal.Footer>
